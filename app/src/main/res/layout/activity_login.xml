@@ -28,6 +28,13 @@
         android:layout_marginTop="130dp"
         android:text="Log in"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnSignup"
+        android:layout_marginTop="180dp"
+        android:text="Sign up"/>
+
 
 
 </RelativeLayout>
