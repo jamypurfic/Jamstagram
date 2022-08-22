@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-
-    tools:context=".LoginActivity">
+    tools:context=".SignupActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -46,43 +44,16 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
     <Button
-        android:id="@+id/btnLogin"
-        style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/etPassword"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="40dp"
-        android:background="#009688"
-        android:text="Log in"
-        android:textColor="#FFFFFF"
-        android:textSize="14sp" />
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnLogin"
-        android:layout_marginStart="120dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/new_user_please_sign_up"
-        android:textSize="14sp">
-
-    </TextView>
-
-    <Button
         android:id="@+id/btnSignup"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="450dp"
+        android:layout_marginTop="350dp"
         android:layout_marginEnd="40dp"
         android:background="#009688"
-        android:text="Sign up"
+        android:text="Submit"
         android:textColor="#FFFFFF"
         android:textSize="14sp" />
-
 
 </RelativeLayout>

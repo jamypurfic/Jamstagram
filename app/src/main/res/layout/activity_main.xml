@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,25 +12,50 @@
         android:id="@+id/ivPostImage"
         android:layout_width="match_parent"
         android:layout_height="250dp"
+        android:layout_marginTop="80dp"
         tools:srcCompat="@tools:sample/avatars" />
 
 
     <Button
         android:id="@+id/btnCaptureImage"
+        style="@android:style/Widget.DeviceDefault.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/take_a_picture" />
+        android:layout_below="@+id/ivPostImage"
+
+        android:layout_marginTop="5dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/take_a_picture"
+        android:textAllCaps="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <EditText
         android:id="@+id/etDescription"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnCaptureImage"
+        android:hint="@string/enter_description_here"/>
 
     <Button
         android:id="@+id/btnSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/submit" />
+        android:layout_below="@+id/etDescription"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/submit"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textColorHint="#673AB7" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnLogout"
+        android:layout_below="@+id/btnSubmit"
+        android:layout_marginTop="30dp"
+        android:text="Log out" />
 
 
-</LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".FeedActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:titleTextColor="@android:color/white">
+
+        <ImageButton
+            android:id="@+id/ibPhoto"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="20dp"
+            android:icon="@drawable/ic_photocamera_foreground" />
+
+        <TextView
+            android:id="@+id/tvInstagram"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="150dp"
+            android:text="Instagram" />
+
+        <ImageButton
+            android:id="@+id/ibMessage"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="100dp"
+            android:icon="@drawable/ic_baseline_send_24" />
+
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar">
+
+        <ImageView
+            android:id="@+id/ivProfile"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/tvUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/ivProfile"
+            tools:text="Username" />
+
+        <ImageView
+            android:id="@+id/ivPost"
+            android:layout_width="420dp"
+            android:layout_height="300dp"
+            android:layout_below="@+id/ivProfile"
+            android:layout_marginTop="10dp"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/tvCaption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ivPost"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="10dp"
+            tools:text="Description" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <ImageButton
+            android:id="@+id/ibHome"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"
+            android:icon="@drawable/ic_baseline_home_24" />
+
+        <ImageButton
+            android:id="@+id/ibAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="170dp"
+            android:layout_marginBottom="10dp"
+            android:icon="@drawable/ic_baseline_add_24" />
+
+        <ImageButton
+            android:id="@+id/ibProfile"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="160dp"
+            android:layout_marginBottom="10dp"
+            android:icon="@drawable/ic_baseline_person_24" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

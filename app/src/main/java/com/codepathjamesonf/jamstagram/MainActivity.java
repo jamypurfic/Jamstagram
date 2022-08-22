@@ -6,6 +6,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
+
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -19,6 +20,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -46,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
     private Button btnSubmit;
     private String photoFileName = "photo.jpg";
     private File photoFile;
+    Button btnLogout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +60,22 @@ public class MainActivity extends AppCompatActivity {
         etDescription = findViewById(R.id.etDescription);
         btnCaptureImage = findViewById(R.id.btnCaptureImage);
         btnSubmit = findViewById(R.id.btnSubmit);
+        btnLogout = findViewById(R.id.btnLogout);
+
+        // log out
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ParseUser.logOut();
+                ParseUser currentUser = ParseUser.getCurrentUser(); // this will now be null
+
+                goLoginActivity();
+
+
+            }
+        });
+
 
         btnCaptureImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,9 +84,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-        // method to query posts
+// defined later
        queryPost();
+
+
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,7 +111,18 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-//method to launch the camera
+
+    private void goLoginActivity() {
+
+        Toast.makeText(this, "You are now logged out. Please log in again.", Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+        finish();
+
+    }
+
+    //method to launch the camera
     private void launchCamera() {
         // create Intent to take a picture and return control to the calling application
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -161,6 +193,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "error while saving", Toast.LENGTH_SHORT).show();
                 }
                 Log.i(TAG, "Post saved successfully");
+                Toast.makeText(MainActivity.this, "Your post is saved successfully!", Toast.LENGTH_SHORT).show();
                 etDescription.setText("");
                 ivPostImage.setImageResource(0);
 
@@ -173,11 +206,13 @@ public class MainActivity extends AppCompatActivity {
         // Specify which class to query
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         query.include(Post.KEY_USER);
+        query.include(Post.KEY_IMAGE);
+        query.include(Post.KEY_DESCRIPTION);
         query.findInBackground(new FindCallback<Post>() {
             @Override
             public void done(List<Post> posts, ParseException e) {
                 if (e != null) {
-                    Log.e(TAG, "unbale to find posts");
+                    Log.e(TAG, "unable to find posts");
                 }
                 for (Post post: posts) {
                     Log.i(TAG, "Post:" + post.getDescription() + ", username: " + post.getUser().getUsername());

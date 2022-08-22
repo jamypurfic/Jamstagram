@@ -50,43 +50,21 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        // here we want to sign up new user when button is pressed
+        // here we want to go to sign activity when button is pressed
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = etUsername.getText().toString();
-                String password = etPassword.getText().toString();
-                SignupUser(username,password);
+               Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
 
-// Method for signup
-    private void SignupUser(String username, String password) {
-        Log.i(TAG, "attempt to Signup: " + username);
-
-        // Create the ParseUser
-        ParseUser user = new ParseUser();
-// Set core properties
-        user.setUsername(username);
-        user.setPassword(password);
-// Invoke signUpInBackground
-        user.signUpInBackground(new SignUpCallback() {
-            public void done(ParseException e) {
-                if (e == null) {
-                    goMainActivity();
-                    // Hooray! Let them use the app now.
-                } else {
-                    Log.e(TAG, "issue with login", e);
-                    // Sign up didn't succeed. Look at the ParseException
-                    // to figure out what went wrong
-                }
-            }
-        });
 
 
 
-    }
+
 // Method for login
     private void loginUser(String username, String password) {
         Log.i(TAG, "attempt to login: " + username);
@@ -99,6 +77,8 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
+                Toast.makeText(LoginActivity.this, "Yay! You are now logged in.", Toast.LENGTH_SHORT).show();
+
                 //if no error, we navigate to MainActivity
                 goMainActivity();
 
@@ -107,7 +87,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void goMainActivity() {
-        Toast.makeText(this, "Success!", Toast.LENGTH_SHORT).show();
         Intent i = new Intent (this, MainActivity.class);
         startActivity(i);
       finish();
