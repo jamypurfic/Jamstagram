@@ -28,9 +28,7 @@ The following **additional** features are implemented:
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
-
-<img src='https://media.giphy.com/media/25uKktYUkxlpttYtGL/giphy.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
+https://media.giphy.com/media/25uKktYUkxlpttYtGL/giphy.gif
 
 ## Notes
 
