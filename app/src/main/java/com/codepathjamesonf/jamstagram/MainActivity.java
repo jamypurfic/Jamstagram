@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageView ivPostImage;
     private EditText etDescription;
+    private ImageButton btnHome;
     private Button btnCaptureImage;
     private Button btnSubmit;
     private String photoFileName = "photo.jpg";
@@ -61,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         btnCaptureImage = findViewById(R.id.btnCaptureImage);
         btnSubmit = findViewById(R.id.btnSubmit);
         btnLogout = findViewById(R.id.btnLogout);
+        btnHome = findViewById(R.id.btnHome);
 
         // log out
 
@@ -84,13 +86,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goFeedActivity();
+
+            }
+        });
+
 // defined later
-       queryPost();
 
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String description = etDescription.getText().toString();
                 if (description.isEmpty()) {
                     Toast.makeText(MainActivity.this, "Description can't be empty", Toast.LENGTH_SHORT).show();
@@ -105,11 +115,18 @@ public class MainActivity extends AppCompatActivity {
                 ParseUser currentUser = ParseUser.getCurrentUser();
                 savePost(description, currentUser, photoFile);
             }
+
+
         });
 //
 //
 
 
+    }
+
+    private void goFeedActivity() {
+        Intent intent = new Intent(this, FeedActivity.class);
+        startActivity(intent);
     }
 
     private void goLoginActivity() {
@@ -201,25 +218,5 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void queryPost() {
 
-        // Specify which class to query
-        ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
-        query.include(Post.KEY_USER);
-        query.include(Post.KEY_IMAGE);
-        query.include(Post.KEY_DESCRIPTION);
-        query.findInBackground(new FindCallback<Post>() {
-            @Override
-            public void done(List<Post> posts, ParseException e) {
-                if (e != null) {
-                    Log.e(TAG, "unable to find posts");
-                }
-                for (Post post: posts) {
-                    Log.i(TAG, "Post:" + post.getDescription() + ", username: " + post.getUser().getUsername());
-
-                }
-
-            }
-        });
-    }
 }

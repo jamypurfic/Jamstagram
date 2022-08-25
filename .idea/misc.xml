@@ -5,10 +5,16 @@
       <map>
         <entry key="..\:/Users/ayibo/AndroidStudioProjects/Jamstagram/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.2075" />
         <entry key="..\:/Users/ayibo/AndroidStudioProjects/Jamstagram/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.2075" />
-        <entry key="..\:/Users/ayibo/AndroidStudioProjects/Jamstagram/app/src/main/res/layout/activity_feed.xml" value="0.33" />
+        <entry key="..\:/Users/ayibo/AndroidStudioProjects/Jamstagram/app/src/main/res/layout/activity_feed.xml" value="0.25476603119584057" />
         <entry key="..\:/Users/ayibo/AndroidStudioProjects/Jamstagram/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Users/ayibo/AndroidStudioProjects/Jamstagram/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/ayibo/AndroidStudioProjects/Jamstagram/app/src/main/res/layout/activity_signup.xml" value="0.2" />
+        <entry key="..\:/Users/ayibo/AndroidStudioProjects/Jamstagram/app/src/main/res/layout/fragment_feed.xml" value="0.14814814814814814" />
+        <entry key="..\:/Users/ayibo/AndroidStudioProjects/Jamstagram/app/src/main/res/layout/fragment_stream.xml" value="0.2" />
+        <entry key="..\:/Users/ayibo/AndroidStudioProjects/Jamstagram/app/src/main/res/layout/item_post.xml" value="0.22" />
+        <entry key="..\:/Users/ayibo/AndroidStudioProjects/Jamstagram/app/src/main/res/layout/item_recycler.xml" value="0.33" />
+        <entry key="..\:/Users/ayibo/AndroidStudioProjects/Jamstagram/app/src/main/res/layout/recycler.xml" value="0.23222748815165878" />
+        <entry key="..\:/Users/ayibo/AndroidStudioProjects/Jamstagram/app/src/main/res/layout/recycler_activity.xml" value="0.33" />
         <entry key="..\:/Users/ayibo/AndroidStudioProjects/Jamstagram/app/src/main/res/xml/fileprovider.xml" value="0.1" />
       </map>
     </option>
