@@ -26,9 +26,10 @@ The following **additional** features are implemented:
 - [ ] List anything else that you can get done to improve the app functionality!
 
 ## Video Walkthrough
+![20220825_155951](https://user-images.githubusercontent.com/20778976/186760535-a2baff34-7b82-495a-bf18-bb29f329cc36.gif)
+![20220825_160738](https://user-images.githubusercontent.com/20778976/186760880-bc1240ac-94dc-4bc7-adb5-bca4de487cf5.gif)
 
 Here's a walkthrough of implemented user stories:
-https://media.giphy.com/media/25uKktYUkxlpttYtGL/giphy.gif
 
 ## Notes
 
