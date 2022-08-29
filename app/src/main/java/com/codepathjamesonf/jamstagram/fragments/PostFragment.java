@@ -76,6 +76,8 @@ public class PostFragment extends Fragment {
         //set adapter
         rvPost.setAdapter(adapter);
 
+
+
         getPost();
     }
 
