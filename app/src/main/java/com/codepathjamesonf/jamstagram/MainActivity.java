@@ -2,9 +2,11 @@ package com.codepathjamesonf.jamstagram;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
+import androidx.fragment.app.Fragment;
 
 
 import android.content.Intent;
@@ -17,6 +19,7 @@ import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.text.Editable;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,6 +27,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -44,12 +48,12 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageView ivPostImage;
     private EditText etDescription;
-    private ImageButton btnHome;
     private Button btnCaptureImage;
     private Button btnSubmit;
     private String photoFileName = "photo.jpg";
     private File photoFile;
     Button btnLogout;
+    BottomNavigationView bottomNavigationView;
 
 
     @Override
@@ -62,7 +66,30 @@ public class MainActivity extends AppCompatActivity {
         btnCaptureImage = findViewById(R.id.btnCaptureImage);
         btnSubmit = findViewById(R.id.btnSubmit);
         btnLogout = findViewById(R.id.btnLogout);
-        btnHome = findViewById(R.id.btnHome);
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Fragment fragment;
+                switch (item.getItemId()) {
+                    case R.id.action_home:
+                        Toast.makeText(MainActivity.this, "Home", Toast.LENGTH_SHORT).show();
+                        break;
+
+                    case R.id.action_add:
+                        Toast.makeText(MainActivity.this, "Add", Toast.LENGTH_SHORT).show();
+
+                        break;
+
+                    case R.id.action_profile:
+                    default:
+                        Toast.makeText(MainActivity.this, "Profile", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+                return true;
+            }
+        });
 
         // log out
 
@@ -86,13 +113,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                goFeedActivity();
 
-            }
-        });
 
 // defined later
 
