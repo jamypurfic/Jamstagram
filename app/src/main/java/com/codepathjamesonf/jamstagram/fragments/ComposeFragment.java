@@ -22,9 +22,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.codepathjamesonf.jamstagram.LoginActivity;
 import com.codepathjamesonf.jamstagram.MainActivity;
 import com.codepathjamesonf.jamstagram.Post;
 import com.codepathjamesonf.jamstagram.R;
@@ -50,7 +52,7 @@ public class ComposeFragment extends Fragment {
 
     private ImageView ivPostImage;
     private EditText etDescription;
-    private Button btnCaptureImage;
+    private ImageButton btnCaptureImage;
     private Button btnSubmit;
     Button btnLogout;
     private String photoFileName = "photo.jpg";
@@ -113,19 +115,6 @@ public class ComposeFragment extends Fragment {
 
         });
 
-//        // log out
-//
-//        btnLogout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                ParseUser.logOut();
-//                ParseUser currentUser = ParseUser.getCurrentUser(); // this will now be null
-//
-//                goLoginActivity();
-//
-//
-//            }
-//        });
 
 
 
@@ -134,6 +123,8 @@ public class ComposeFragment extends Fragment {
 
 
     }
+
+
 
     private void savePost(String description, ParseUser currentUser, File photoFile) {
         Post post = new Post();

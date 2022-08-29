@@ -30,6 +30,7 @@ import android.widget.Toast;
 
 import com.codepathjamesonf.jamstagram.fragments.ComposeFragment;
 import com.codepathjamesonf.jamstagram.fragments.PostFragment;
+import com.codepathjamesonf.jamstagram.fragments.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -66,14 +67,12 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.action_home:
                         //TODO update the fragment
-                        Toast.makeText(MainActivity.this, "Home", Toast.LENGTH_SHORT).show();
                         fragment = new PostFragment();
                         break;
 
                     case R.id.action_add:
                         fragment = new ComposeFragment();
 
-                        Toast.makeText(MainActivity.this, "Add", Toast.LENGTH_SHORT).show();
 
                         break;
 
@@ -81,8 +80,7 @@ public class MainActivity extends AppCompatActivity {
                         //TODO update the fragment
 
                     default:
-                        fragment = new ComposeFragment();
-                        Toast.makeText(MainActivity.this, "Profile", Toast.LENGTH_SHORT).show();
+                        fragment = new ProfileFragment();
                         break;
                 }
                 fragmentManager.beginTransaction().replace(R.id.flCOntainer, fragment).commit();
@@ -105,15 +103,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    private void goLoginActivity() {
-
-        Toast.makeText(this, "You are now logged out. Please log in again.", Toast.LENGTH_SHORT).show();
-
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
-        finish();
-
-    }
 
 
 
