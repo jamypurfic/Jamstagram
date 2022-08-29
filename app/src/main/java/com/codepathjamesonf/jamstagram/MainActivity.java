@@ -28,6 +28,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.codepathjamesonf.jamstagram.fragments.ComposeFragment;
+import com.codepathjamesonf.jamstagram.fragments.PostFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -63,16 +65,23 @@ public class MainActivity extends AppCompatActivity {
                 Fragment fragment;
                 switch (item.getItemId()) {
                     case R.id.action_home:
+                        //TODO update the fragment
                         Toast.makeText(MainActivity.this, "Home", Toast.LENGTH_SHORT).show();
+                        fragment = new PostFragment();
                         break;
 
                     case R.id.action_add:
+                        fragment = new ComposeFragment();
+
                         Toast.makeText(MainActivity.this, "Add", Toast.LENGTH_SHORT).show();
 
                         break;
 
                     case R.id.action_profile:
+                        //TODO update the fragment
+
                     default:
+                        fragment = new ComposeFragment();
                         Toast.makeText(MainActivity.this, "Profile", Toast.LENGTH_SHORT).show();
                         break;
                 }
@@ -81,6 +90,8 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+        // Set default selection
+        bottomNavigationView.setSelectedItemId(R.id.action_home);
 
 
 
@@ -92,10 +103,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void goFeedActivity() {
-        Intent intent = new Intent(this, FeedActivity.class);
-        startActivity(intent);
-    }
+
 
     private void goLoginActivity() {
 
