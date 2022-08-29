@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -37,6 +38,7 @@ public class PostFragment extends Fragment {
     TextView tvCaption;
     PostAdapter adapter = new PostAdapter(getContext(), allPost);
     private RecyclerView rvPost;
+    SwipeRefreshLayout swipeContainer;
 
 
     @Override
@@ -57,6 +59,26 @@ public class PostFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         rvPost = view.findViewById(R.id.rvPost);
+
+        swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
+        // Setup refresh listener which triggers new data loading
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                                                @Override
+                                                public void onRefresh() {
+                                                    getPost();
+
+                                                }
+                                            });
+
+        // Configure the refreshing colors
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+
+
+
+
 //
 //        //steps for the rv
 //        // 0. layout  for one row
@@ -87,7 +109,8 @@ public class PostFragment extends Fragment {
     private void getPost() {
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         query.include(Post.KEY_USER);
-        query.include(Post.KEY_CREATED_AT);
+        query.orderByDescending("createdAt");
+        query.setLimit(20);
         query.findInBackground((posts, e) -> {
             if (e != null) {
                 Log.e(TAG, "issue with getting posts", e);
@@ -96,8 +119,12 @@ public class PostFragment extends Fragment {
             for (Post post: posts) {
                 Log.i(TAG, "Post: " + post.getDescription());
             }
+            allPost.clear();
             allPost.addAll(posts);
             adapter.notifyDataSetChanged();
+            swipeContainer.setRefreshing(false);
+
+
 
 
 
